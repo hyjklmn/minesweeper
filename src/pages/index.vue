@@ -7,7 +7,10 @@ const state = play.state
 
 <template>
   <div select-none>
-    <p @click="toggleDev()" cursor-pointer>Minesweeper</p>
+    <p>
+      <span cursor-pointer @click="toggleDev()">Minesweeper</span>
+      <button border rounded @click="play.reset">reset</button>
+    </p>
     <div mt-3>
       <div v-for="(row, y) in state" :key="y">
         <MineBlock

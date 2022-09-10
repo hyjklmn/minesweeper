@@ -15,14 +15,6 @@ export class PlayGame {
   constructor(public width: number, public height: number) {
     this.reset()
   }
-  reset() {
-    this.state.value = Array.from({ length: this.height }, (_, y) =>
-      Array.from(
-        { length: this.width },
-        (_, x): BlockState => ({ x, y, adjacentMines: 0, revealed: false })
-      )
-    )
-  }
 
   generateMines(state: BlockState[][], initial: BlockState) {
     for (const row of state) {
@@ -96,5 +88,14 @@ export class PlayGame {
         alert("You Win!")
       }
     }
+  }
+  reset() {
+    this.mineGenerated = false
+    this.state.value = Array.from({ length: this.height }, (_, y) =>
+      Array.from(
+        { length: this.width },
+        (_, x): BlockState => ({ x, y, adjacentMines: 0, revealed: false })
+      )
+    )
   }
 }
