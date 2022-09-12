@@ -2,7 +2,8 @@
 import { PlayGame } from "~/composables/logic"
 import { toggleDev } from "~/composables"
 const play = new PlayGame(12, 12)
-const state = play.state
+const state = computed(() => play.board)
+useStorage("minesweeper-state", play.state)
 </script>
 
 <template>
