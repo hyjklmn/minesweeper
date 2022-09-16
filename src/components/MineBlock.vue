@@ -50,7 +50,7 @@ function getBlockClass(block: BlockState) {
           />
         </svg>
       </div>
-      <div v-else>{{ block.adjacentMines }}</div>
+      <div v-else font-600>{{ block.adjacentMines }}</div>
     </template>
   </button>
 </template>
