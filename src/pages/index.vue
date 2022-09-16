@@ -11,13 +11,13 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div select-none>
+  <div select-none overflow-scroll>
     <p>
       <span cursor-pointer @click="toggleDev()">Minesweeper</span>
       <button border rounded @click="play.reset">reset</button>
       {{ play.blocks.reduce((a, b) => a + (b.mine ? 1 : 0), 0) }}
     </p>
-    <div mt-3>
+    <div ma mt-3 w-max>
       <div v-for="(row, y) in state" :key="y">
         <MineBlock
           v-for="(block, x) in row"
