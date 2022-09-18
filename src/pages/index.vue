@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PlayGame } from "~/composables/logic"
 import { toggleDev } from "~/composables"
-const play = new PlayGame(10, 10, 10)
+const play = new PlayGame(5, 5, 3)
 const state = computed(() => play.board)
 useStorage("minesweeper-state", play.state)
 
@@ -11,7 +11,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div select-none overflow-scroll>
+  <div select-none>
     <p>
       <span cursor-pointer @click="toggleDev()">Minesweeper</span>
       <button border rounded @click="play.reset">reset</button>
@@ -28,5 +28,6 @@ watchEffect(() => {
         />
       </div>
     </div>
+    <Confetti :passed="play.state.value.gameState === 'won'" />
   </div>
 </template>

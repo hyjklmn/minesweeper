@@ -87,6 +87,7 @@ export class PlayGame {
     if (block.mine) {
       this.state.value.gameState = "lost"
       this.showAllMines()
+      this.revealedFlags()
       return
     }
     this.expendZero(block)
@@ -120,7 +121,6 @@ export class PlayGame {
         alert("lost")
       } else {
         this.state.value.gameState = "won"
-        alert("won")
       }
     }
   }
@@ -130,6 +130,12 @@ export class PlayGame {
       if (block.mine) {
         block.revealed = true
       }
+    })
+  }
+  revealedFlags() {
+    const blocks = this.board.flat()
+    blocks.forEach((block) => {
+      block.flagged = false
     })
   }
 
