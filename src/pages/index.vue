@@ -4,6 +4,11 @@ import { toggleDev } from "~/composables"
 const play = new PlayGame(9, 9, 10)
 const state = computed(() => play.board)
 
+const minesCount = computed(() => {
+  return play.blocks.reduce((a, b) => a + (b.mine ? 1 : 0), 0)
+})
+
+// const { counter, pause, resume } = useInterval(1000, { controls: true })
 useStorage("minesweeper-state", play.state)
 
 watchEffect(() => {
@@ -28,14 +33,30 @@ function newGame(difficulty: "easy" | "medium" | "hard") {
 <template>
   <div select-none>
     <p>
-      <span cursor-pointer @click="toggleDev()">Minesweeper</span>
+      <span cursor-pointer @click="toggleDev()">{{ $t(`text.title`) }}</span>
     </p>
-    <div>
-      <button border rounded @click="play.reset()">reset</button>
-      {{ play.blocks.reduce((a, b) => a + (b.mine ? 1 : 0), 0) }}
-      <button @click="newGame('easy')">easy</button>
-      <button @click="newGame('medium')">medium</button>
-      <button @click="newGame('hard')">hard</button>
+    <div flex="~" justify-center items-center text-xl my-2 gap-3>
+      <div flex="~" justify-center items-center>
+        <div i-carbon-timer></div>
+      </div>
+      <div flex="~" justify-center items-center>
+        {{ minesCount }}
+      </div>
+    </div>
+
+    <div flex="~" justify-center items-center gap-3>
+      <button border rounded @click="play.reset()">
+        {{ $t(`text.Reset`) }}
+      </button>
+      <button border rounded @click="newGame('easy')">
+        {{ $t(`text.Easy`) }}
+      </button>
+      <button border rounded @click="newGame('medium')">
+        {{ $t(`text.Medium`) }}
+      </button>
+      <button border rounded @click="newGame('hard')">
+        {{ $t(`text.Hard`) }}
+      </button>
     </div>
     <div ma mt-3 w-max>
       <div v-for="(row, y) in state" :key="y">
