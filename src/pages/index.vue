@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { PlayGame } from "~/composables/logic"
-import { toggleDev } from "~/composables"
+import { language, toggleDev } from "~/composables"
 import { useI18n } from "vue-i18n"
 const play = new PlayGame(9, 9, 10)
 const state = computed(() => play.board)
 const i18n = useI18n()
+const lang = useSessionStorage("lang", language)
 const minesCount = computed(() => {
   return play.blocks.reduce((a, b) => a + (b.mine ? 1 : 0), 0)
 })
@@ -31,12 +32,13 @@ function newGame(difficulty: "easy" | "medium" | "hard") {
 }
 function change(type: string) {
   i18n.locale.value = type
+  lang.value = type
 }
 </script>
 
 <template>
   <div select-none>
-    <button @click="change('zh')">locale</button>
+    <button @click="change('zh')" i-carbon-translate></button>
     <p>
       <span cursor-pointer @click="toggleDev()">{{ $t(`text.title`) }}</span>
     </p>

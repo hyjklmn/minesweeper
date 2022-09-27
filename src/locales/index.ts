@@ -1,7 +1,7 @@
 import en from "./en"
-import ch from "./zh"
+import zh from "./zh"
 
 export default {
   en,
-  ch,
+  zh,
 }
