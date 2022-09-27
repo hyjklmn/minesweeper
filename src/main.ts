@@ -6,7 +6,7 @@ import App from "./App.vue"
 import "@unocss/reset/tailwind.css"
 import "./styles/main.css"
 import "uno.css"
-import i18n from "./language/i18n"
+import i18n from "./locales/i18n"
 const app = createApp(App)
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
