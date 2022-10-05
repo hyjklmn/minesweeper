@@ -30,15 +30,20 @@ function newGame(difficulty: "easy" | "medium" | "hard") {
       break
   }
 }
-function change(type: string) {
-  i18n.locale.value = type
-  lang.value = type
+function changeLang(type: "en" | "zh") {
+  if (i18n.locale.value === "en") {
+    i18n.locale.value = type
+    lang.value = type
+  } else {
+    i18n.locale.value = "en"
+    lang.value = "en"
+  }
 }
 </script>
 
 <template>
   <div select-none>
-    <button @click="change('zh')" i-carbon-translate></button>
+    <button @click="changeLang('zh')" i-carbon-translate></button>
     <p>
       <span cursor-pointer @click="toggleDev()">{{ $t(`text.title`) }}</span>
     </p>
