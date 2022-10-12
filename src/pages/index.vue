@@ -11,7 +11,7 @@ const minesCount = computed(() => {
 })
 
 // const { counter, pause, resume } = useInterval(1000, { controls: true })
-useStorage("minesweeper-state", play.state)
+useSessionStorage("minesweeper-state", play.state)
 
 watchEffect(() => {
   play.checkGameState()
