@@ -18,7 +18,7 @@
 </p>
 
 ## Todo
-1. - [ ] <font size=3>i18n</font>
+1. - [x] <font size=3>i18n</font>
 2. - [ ] <font size=3>Difficulty selection button style</font>
 3. - [ ] <font size=3>t PI DAR</font>
 4. - [ ] <font size=3>Reset button style</font>

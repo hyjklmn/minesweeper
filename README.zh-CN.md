@@ -19,7 +19,7 @@
 <br>
 
 ## 待办
-1. - [ ] <font size=3>国际化</font>
+1. - [x] <font size=3>国际化</font>
 2. - [ ] <font size=3>困难选择按钮样式</font>
 3. - [ ] <font size=3>计时器</font>
 4. - [ ] <font size=3>重置按钮样式</font>
